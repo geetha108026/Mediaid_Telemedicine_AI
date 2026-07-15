@@ -1,0 +1,16 @@
+:root{--bg:#0f172a;--muted:#94a3b8;--text:#e2e8f0}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#0b1020,#0f172a);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+.app-shell{max-width:1000px;margin:0 auto;padding:16px}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}.brand{display:flex;align-items:center;gap:10px}.logo{width:36px;height:36px;display:grid;place-items:center;background:#1f2937;border-radius:10px}.title{font-weight:700}
+.tag{color:var(--muted);font-size:12px}
+.wizard{display:grid;gap:20px}.slide{display:none}.slide.active{display:grid;gap:16px}
+.card{background:radial-gradient(1200px 1400px at 10% -10%,#14203d 0%,#0b1220 60%);border:1px solid #1f2937;border-radius:16px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.card.hero{text-align:center;padding:28px}.grid.cols-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}@media(max-width:860px){.grid.cols-3{grid-template-columns:1fr}}
+.form-row{display:grid;gap:6px;margin-bottom:10px}label{color:var(--muted);font-size:14px}
+input,textarea,select{background:#0b1220;border:1px solid #243045;color:var(--text);padding:10px 12px;border-radius:10px;outline:none}
+textarea{resize:vertical}input:focus,textarea:focus,select:focus{border-color:#2a69ff;box-shadow:0 0 0 4px #2a69ff22}
+.btn{background:#1f2937;color:var(--text);border:1px solid #334155;padding:10px 14px;border-radius:10px;cursor:pointer}.btn.primary{background:linear-gradient(135deg,#22c55e,#16a34a);border-color:#16a34a}.btn.ghost{background:transparent;border-color:#334155}
+.actions{display:flex;justify-content:space-between;gap:10px;margin-top:10px}.actions.tight{justify-content:flex-end}
+.banner.danger{background:#7f1d1d;color:#fecaca;border:1px solid #ef444455;padding:8px 10px;border-radius:10px;margin-top:8px}
+.muted{color:var(--muted)}.mono{font-family:ui-monospace,Consolas,monospace;white-space:pre-wrap}
+.footer{text-align:center;color:var(--muted);margin:20px 0}

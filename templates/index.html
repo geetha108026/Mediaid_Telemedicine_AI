@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareBridge — Telemedicine & Mental Health</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">🩺</div>
+        <div class="title">CareBridge</div>
+      </div>
+      <div class="tag">Demo • Not for medical use</div>
+    </header>
+
+    <main class="wizard">
+      <section class="slide active" id="slide-welcome">
+        <div class="card hero">
+          <h1>Your smart health companion</h1>
+          <p>Check symptoms, screen mental well‑being, and book an appointment — all in one clean flow.</p>
+          <button class="btn primary" data-next>Get started</button>
+        </div>
+        <div class="grid cols-3 features">
+          <div class="card"><h3>Symptom Check</h3><p>Lightweight AI ranks likely conditions from your description.</p></div>
+          <div class="card"><h3>Mental Health</h3><p>Quick awareness screen (PHQ‑2 & GAD‑2) with resources.</p></div>
+          <div class="card"><h3>Book Visit</h3><p>Pick a date/time and get a confirmation ID instantly.</p></div>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-info">
+        <div class="card">
+          <h2>Patient details</h2>
+          <div class="form-row"><label>Full name</label><input id="name" placeholder="e.g., Aisha Kumar"></div>
+          <div class="form-row"><label>Phone number</label><input id="phone" placeholder="+91 9XXXXXXXXX"></div>
+          <div class="actions"><button class="btn ghost" data-prev>Back</button><button class="btn primary" data-next>Next</button></div>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-symptoms">
+        <div class="card">
+          <h2>Describe your symptoms</h2>
+          <textarea id="symptoms" rows="6" placeholder="Example: fever and cough for 2 days, mild shortness of breath..."></textarea>
+          <div class="actions"><button class="btn ghost" data-prev>Back</button><button class="btn primary" id="btn-diagnose">Analyze</button></div>
+        </div>
+        <div class="card" id="diag-result" hidden>
+          <h3>AI assessment</h3>
+          <pre id="diag-summary" class="mono"></pre>
+          <div id="urgent-banner" class="banner danger" hidden>⚠️ If symptoms are severe, seek urgent care immediately.</div>
+          <p class="muted" id="diag-disclaimer"></p>
+          <div class="actions tight"><button class="btn" data-next>Continue</button></div>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-mental">
+        <div class="card">
+          <h2>Mental well‑being check (PHQ‑2)</h2>
+          <p class="muted">In the past 2 weeks, how often have you been bothered by any of the following problems?</p>
+          <div class="quiz">
+            <div class="q"><label>1) Little interest or pleasure in doing things</label>
+              <select id="phq1"><option value="0">Not at all (0)</option><option value="1">Several days (1)</option><option value="2">More than half the days (2)</option><option value="3">Nearly every day (3)</option></select>
+            </div>
+            <div class="q"><label>2) Feeling down, depressed, or hopeless</label>
+              <select id="phq2"><option value="0">Not at all (0)</option><option value="1">Several days (1)</option><option value="2">More than half the days (2)</option><option value="3">Nearly every day (3)</option></select>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Anxiety check (GAD‑2)</h2>
+          <div class="quiz">
+            <div class="q"><label>1) Feeling nervous, anxious, or on edge</label>
+              <select id="gad1"><option value="0">Not at all (0)</option><option value="1">Several days (1)</option><option value="2">More than half the days (2)</option><option value="3">Nearly every day (3)</option></select>
+            </div>
+            <div class="q"><label>2) Not being able to stop or control worrying</label>
+              <select id="gad2"><option value="0">Not at all (0)</option><option value="1">Several days (1)</option><option value="2">More than half the days (2)</option><option value="3">Nearly every day (3)</option></select>
+            </div>
+          </div>
+          <div class="actions"><button class="btn ghost" data-prev>Back</button><button class="btn primary" id="btn-mental">See results</button></div>
+        </div>
+        <div class="card" id="mental-result" hidden>
+          <h3>Your mental health summary</h3>
+          <div id="mh-lines"></div>
+          <div class="resources">
+            <h4>Helpful resources</h4>
+            <ul><li>Talk to someone you trust; consider a counselor or GP.</li><li>Sleep, movement, and regular meals help stabilize mood.</li><li>If you feel unsafe or at risk of self‑harm, seek emergency help immediately.</li></ul>
+          </div>
+          <div class="actions tight"><button class="btn" data-next>Continue</button></div>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-book">
+        <div class="card">
+          <h2>Book an appointment</h2>
+          <div class="form-row"><label>Date</label><input type="date" id="date"></div>
+          <div class="form-row"><label>Time</label><input type="time" id="time"></div>
+          <div class="actions"><button class="btn ghost" data-prev>Back</button><button class="btn primary" id="btn-book">Book now</button></div>
+        </div>
+        <div class="card" id="book-result" hidden>
+          <h3>Appointment confirmed</h3>
+          <p id="book-msg"></p>
+          <div class="actions tight"><button class="btn" data-next>Finish</button></div>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-done">
+        <div class="card hero">
+          <h2>You're all set ✅</h2>
+          <p>We hope this flow helped you reflect on your health today.</p>
+          <button class="btn" onclick="window.location.reload()">Start over</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer"><small>© 2025 CareBridge. Educational demo only. Not a medical device.</small></footer>
+  </div>
+  <script src="/static/script.js"></script>
+</body>
+</html>
